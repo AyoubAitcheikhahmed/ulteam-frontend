@@ -1,0 +1,70 @@
+import { ArrowBackIos, ArrowForwardIos} from '@material-ui/icons'
+import React from 'react'
+import styled from 'styled-components'
+
+const Container = styled.div`
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+`;
+
+const Arrow = styled.div`
+    width: 50px;
+    height: 50px;
+    background-color: #d475b3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: ${props => props.direction === "left" && "10px"};
+    right: ${props => props.direction === "right" && "10px"};
+    cursor: pointer;
+    opacity: 0.5;
+
+    margin: auto;
+`;
+
+const Wrapper = styled.div`
+    height: 100%;
+`;
+
+const Slide = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const ImgContainer = styled.div`
+    flex: 1;
+`;
+const Image = styled.img`
+
+`;
+const InfoContainer = styled.div`
+    flex: 1;
+`;
+const Slider = () => {
+    return (
+        <Container>
+            <Arrow direction="left">
+                <ArrowBackIos style={{color: "white"}}/>
+            </Arrow>
+            <Wrapper>
+                <ImgContainer>
+                    <Image src="https://s3-eu-central-1.amazonaws.com/www-staging.esports.com/WP%20Media%20Folder%20-%20esports-com/app/uploads/2021/09/BF2042-Cover.jpg"/>
+                </ImgContainer>
+                <InfoContainer>
+                    
+                </InfoContainer>
+            </Wrapper>
+            <Arrow direction="right">
+                <ArrowForwardIos style={{color: "white"}}/>
+            </Arrow>
+        </Container>
+    )
+}
+
+export default Slider
