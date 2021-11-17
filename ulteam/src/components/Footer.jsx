@@ -1,8 +1,9 @@
-import { Instagram, Twitter } from "@material-ui/icons"
+import { Instagram, MailOutline, Phone, Twitter } from "@material-ui/icons"
 import styled from "styled-components"
 
 const Container = styled.div`
     display: flex;
+    background-color: #3dc3b67b;
 `
 
 const Left = styled.div`
@@ -16,23 +17,61 @@ const Logo = styled.h1`
 `
 
 const Desc = styled.p`
-
+    margin: 20px 0px;
 `
 
 const SocialContainer = styled.div`
-
+    display: flex;
 `
 
 const SocialIcon = styled.div`
-
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #${props => props.color};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 10px;
 `
 
 const Center = styled.div`
     flex: 1;
+    padding: 20px;
 `
 
+const Title = styled.h3`
+    margin-bottom: 30px;
+`
+
+const List = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+`
+const ListItem = styled.li`
+    width: 50%;
+    margin-bottom: 10px;
+
+`
+
+const ContactItem = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+`
+const Payment = styled.img`
+    margin-top: 10px;
+    width: 50%;
+`
 const Right = styled.div`
+
     flex: 1;
+    padding: 20px;
 `
 const Footer = () => {
     return (
@@ -43,16 +82,34 @@ const Footer = () => {
                 2021, Ulteam, Inc. All rights reserved. Ulteam, the Epic Games logo, Fortnite, the Fortnite logo, Unreal, Unreal Engine, the Unreal Engine logo, Unreal Tournament, and the Unreal Tournament logo are trademarks or registered trademarks of Epic Games, Inc. in the United States of America and elsewhere. Other brands or product names are the trademarks of their respective owners. Non-US transactions through Epic Games International, S.à r.l. 
                 </Desc>
                 <SocialContainer>
-                    <SocialIcon>
-                        <Instagram/>
+                    <SocialIcon color="C13584">
+                        <Instagram />
                     </SocialIcon>
-                    <SocialIcon>
+                    <SocialIcon color="1DA1F2">
                         <Twitter/>
                     </SocialIcon>
                 </SocialContainer>
             </Left>
-            <Center></Center>
-            <Right></Right>
+            <Center>
+                <Title>Links</Title>
+                <List>
+                    <ListItem>Home</ListItem>
+                    <ListItem>Free Games</ListItem>
+                    <ListItem>Cart</ListItem>
+                    <ListItem>Wishlist</ListItem>
+                    <ListItem>Terms</ListItem>
+                </List>
+            </Center>
+            <Right>
+                <Title>Contact</Title>
+                    <ContactItem>
+                        <MailOutline style={{marginRight: "10px"}}/>ulteam@home.be
+                    </ContactItem>
+                    <ContactItem>
+                        <Phone style={{marginRight: "10px"}}/>+32 466069813
+                    </ContactItem>
+                    <Payment src="https://i.ibb.co/Qfvn4z6/payment.png"/>
+            </Right>
         </Container>
     )
 }
