@@ -73,9 +73,17 @@ const Desc = styled.p`
     letter-spacing: 3px;
 `;
 const Button = styled.button`
+    border: none;
     padding: 5px 60px;
     font-size: 60px;
     cursor: pointer;
+    transition: all 0.5s ease;
+    
+    &&:hover{
+        background-color: #3dc3b6;
+        color: white;
+        transform: scale(1.2);
+    }
 `; 
 const Slider = () => {
 
