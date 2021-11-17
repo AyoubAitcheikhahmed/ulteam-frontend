@@ -33,35 +33,30 @@ const Wrapper = styled.div`
 `
 const Left = styled.div`
     display: flex;
-    flex:2;
+    flex:1;
     align-items: center;
 `;
 const Center = styled.div`
+    justify-content: center;
+    align-items: center;
     flex: 1;
     display: flex;
-    align-items: center;
-
-
 `;
 
-
-
 const Logo = styled.img`
-
     width: 150px;
     height: 40px;
     margin: 5px;
     cursor: pointer;
     display: flex;
-    align-items: center;
-    justify-content: center;
+
     
 
 `;
 const Right = styled.div`
     display: flex;
     justify-content: end;
-    flex:2;
+    flex:1;
 `;
 
 const MenuItem = styled.div`
