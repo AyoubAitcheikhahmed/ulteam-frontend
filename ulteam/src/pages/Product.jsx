@@ -5,12 +5,18 @@ import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
+import { mobile } from '../responsive'
+
 
 const Container = styled.div``
 
 const Wrapper = styled.div`
     padding: 20px;
     display: flex;
+    ${mobile({
+        padding: "10px",
+        flexDirection:"column"
+    })}
 
 `
 const ImgContainer = styled.div`
@@ -21,10 +27,18 @@ const Image = styled.img`
     width: 100%;
     height: 70vh;
     object-fit: cover;
+    ${mobile({
+        marginTop:"20px",
+        height: "40vh",
+    })}
 `
 
 const InfoContainer = styled.div`
-    padding: 0px 50px ;
+    padding: 0px 50px;
+    
+    ${mobile({
+        padding: "10px"
+    })}
     `
 
 const Title = styled.h1`
@@ -32,22 +46,30 @@ const Title = styled.h1`
 `
 
 const Desc = styled.p`
+    font-family: 'Roboto';
     margin: 20px 0px;
 `
 
 const Price = styled.span`
     font-weight: 100;
-    font-size: 3vh;
+    font-size: 6vh;
 `
 
 const ButtonsContainer = styled.div`
     margin-top: 30px;
     display: flex;
     flex-direction: column;
+    ;
+    ${mobile({
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
+    })}
 `
 
 const ButtonAdd = styled.button`
-    margin-top: 30px;
+    margin-left: 10px;
+    cursor: pointer;
     width: 30%;
     border: none;
     padding: 5px 20px;
@@ -60,17 +82,24 @@ const ButtonAdd = styled.button`
         color: white;
         transform: scale(1.1);
     }
-`; 
+    &&:before{
+        content: "Add to cart";
+    }
+    @media only screen and (max-width: 380px){
+        &&:before{
+        content: "+";}
+    }
+`
 
 const ButtonBuy = styled.button`
-
+    cursor: pointer;
     width: 30%;
     border: none;
     padding: 5px 20px;
     font-size: 4vh;
     cursor: pointer;
     transition: all 0.2s ease;
-    
+
     &&:hover{
         background-color: #1b2d51;
         color: white;
@@ -96,7 +125,7 @@ const Product = () => {
                     <Price>22 &euro;</Price>
                     <ButtonsContainer>
                         <ButtonBuy>Buy</ButtonBuy>
-                        <ButtonAdd>Add to shoping Cart</ButtonAdd>
+                        <ButtonAdd></ButtonAdd>
                     </ButtonsContainer>
                 </InfoContainer>
             </Wrapper>

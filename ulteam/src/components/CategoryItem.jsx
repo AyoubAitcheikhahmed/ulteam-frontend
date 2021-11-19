@@ -1,18 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
     flex:1;
     margin: 3px;
     height: 70vh;
     position: relative;
+
 `;
 const Image = styled.img`
+    border-radius: 10px;
     object-fit: cover;
     width: 100%;
     height: 100%;
     overflow: hidden;
     filter: grayscale(90%);
+    ${mobile({
+        height: "35vh", flexDirection: "column"
+    })}
 `;
 const Info = styled.div`
     position: absolute;

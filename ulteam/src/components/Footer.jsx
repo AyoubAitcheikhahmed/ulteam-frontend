@@ -1,9 +1,14 @@
 import { Instagram, MailOutline, Phone, Twitter } from "@material-ui/icons"
 import styled from "styled-components"
+import { mobile } from '../responsive'
 
 const Container = styled.div`
+    
     display: flex;
     background-color: #3dc3b67b;
+    ${mobile({
+        flexDirection: "column"
+    })}
 `
 
 const Left = styled.div`
@@ -11,6 +16,9 @@ const Left = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
+    ${mobile({
+            
+    })}
 `
 const Logo = styled.h1`
 
@@ -18,6 +26,7 @@ const Logo = styled.h1`
 
 const Desc = styled.p`
     margin: 20px 0px;
+    font-family: 'Roboto';
 `
 
 const SocialContainer = styled.div`
@@ -39,6 +48,9 @@ const SocialIcon = styled.div`
 const Center = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile({
+        display:"none"
+    })}
 `
 
 const Title = styled.h3`
@@ -53,12 +65,14 @@ const List = styled.ul`
     flex-wrap: wrap;
 `
 const ListItem = styled.li`
+    cursor: pointer;
     width: 50%;
     margin-bottom: 10px;
 
 `
 
 const ContactItem = styled.div`
+    font-family: 'Roboto';
     margin-bottom: 20px;
     display: flex;
     align-items: center;
