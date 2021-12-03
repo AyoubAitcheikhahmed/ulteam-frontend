@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { mobile } from '../responsive'
-
+import { Link } from "react-router-dom";
 const Container = styled.div`
     flex:1;
     margin: 3px;
@@ -38,25 +38,32 @@ const Title = styled.h1`
     color: black;
 `;
 const Button = styled.button`
+    cursor : pointer;
     border: none;
     padding: 0px 20px;
     font-size: 5vh;
+    transition: all 0.5s ease;
+
+        &&:hover{
+            color: #1b2d51;
+            background-color: #3dc3b6;
+            transform:scale(1.3);
+        }
 `;
 
 
 const CategoryItem = ({item}) => {
     return (
         <Container>
-            <Image src={item.img}>
-
-            </Image>
+            <Link to={`/products/${item.category}`}> 
+            <Image src={item.img}></Image>
             <Info>
                 <Title>
                     {item.title}
                 </Title>
-                <Button>+</Button>
+                <Button> + </Button>
             </Info>
-
+            </Link> 
         </Container>
     )
 }

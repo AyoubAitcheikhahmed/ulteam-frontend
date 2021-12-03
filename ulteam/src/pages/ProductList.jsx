@@ -1,4 +1,6 @@
 
+import { useLocation } from 'react-router'
+import { useState } from 'react'
 import styled from 'styled-components'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
@@ -50,6 +52,28 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
+
+    
+    
+    const catName = useLocation().pathname.split("/")[2];
+    const [filter, setFilter] = useState({})
+    const [sort, setSort] = useState({})
+    
+    const filterHandle = (event) =>{
+        const value = event.target.value;
+        
+        setFilter({
+            ...filter,
+            [event.target.name]:value ,
+        });
+        console.log(filter)
+    }
+
+    const sortHandle = (event) => setSort(event.target.value)
+
+    
+
+
     return (
         <Container>
             <Navbar />
@@ -57,8 +81,8 @@ const ProductList = () => {
             <Title>Products</Title>
             <FilterContainer>
                 <Filter><FilterText>Filter Products:</FilterText>
-                <Select>
-                    <Option disabled selected>Genre</Option>
+                <Select name="genre" onChange={filterHandle}>
+                    <Option disabled>Genre</Option>
                     <Option>Action</Option>
                     <Option>Adventure</Option>
                     <Option>Sport</Option>
@@ -68,8 +92,8 @@ const ProductList = () => {
                     <Option>Puzzel</Option>
                 </Select>
 
-                <Select>
-                    <Option disabled selected>Platform</Option>
+                <Select name="platform" onChange={filterHandle}>
+                    <Option disabled>Platform</Option>
                     <Option>PC</Option>
                     <Option>Nintendo</Option>
                     <Option>PS</Option>
@@ -84,17 +108,14 @@ const ProductList = () => {
                 
                 </Filter>
                 <Filter><FilterText>Sort Products:</FilterText>
-                <Select>
-                    <Option disabled selected>Price</Option>
-                    <Option>Free unlimited</Option>
-                    <Option>Free limited </Option>
-                    <Option>Less than 20 Eur</Option>
-                    <Option>Less than 50 Eur</Option>
-                    <Option>More than 100 Eur</Option>
+                <Select onChange={sortHandle}>
+                    <Option value="free" >Free items</Option>
+                    <Option value="dec" >Price Low &gt; High</Option>
+                    <Option value="inc" >Price High &gt; low </Option>
                 </Select>
                 </Filter>
             </FilterContainer>
-            <Products />
+            <Products category = {catName} filters = {filter} sort = {sort}/>
             <Newsletter />
             <Footer />
         </Container>

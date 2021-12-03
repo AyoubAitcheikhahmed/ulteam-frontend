@@ -50,6 +50,9 @@ const Button = styled.button`
     color: white;
     padding: 5px;
     background-color: #1b2d51;
+        &&:hover{
+            background-color: #3dc3b6;
+        }
 `
 
 const Link = styled.div`
@@ -64,7 +67,7 @@ const Link = styled.div`
 
 const Login = () => {
     return (
-<Container>
+        <Container>
             <Wrapper>
                 <Title>Meldaan</Title>
                 <Form>
