@@ -109,8 +109,8 @@ const ProductList = () => {
                 <Filter><FilterText>Sort Products:</FilterText>
                 <Select onChange={sortHandle}>
                     <Option value="free" >Free items</Option>
-                    <Option value="dec" >Price Low &gt; High</Option>
-                    <Option value="inc" >Price High &gt; low </Option>
+                    <Option value="inc" >Price Low &gt; High</Option>
+                    <Option value="dec" >Price High &gt; low </Option>
                 </Select>
                 </Filter>
             </FilterContainer>

@@ -36,31 +36,41 @@ const Products = ({category,filters,sort}) => {
     
     useEffect(() => {
 
-        filterProduct()
+        filterProducts()
+        sortProducts()
         // setNewProducts(
         //     newProducts.filter( element => Object.values(filters)
         //     .some(item => element.categories.indexOf(item.toUpperCase()) >= 0))
         // );
 
-    }, [products, category,filters]);
+    }, [products, category,filters,sort]);
 
     /**
      * niewe code 
      */
-     function filterProduct() {
+     function filterProducts() {
         if(filters){
-            console.log(filters)
             const res = products.filter(product => {
                 return Object.values(filters).every(filter => {
                     return product.categories.includes(filter) 
                 })
                 });
-            console.log("filterProduct RESPONSE ",res)
             const listOfProducts = res
-            console.log("filterProduct LISTOFPRODUCTS ",listOfProducts)
             setNewProducts([...listOfProducts])
         }
       }
+
+      function sortProducts() {
+       console.log(sort)
+        if (sort){
+            setNewProducts( prev => 
+                sort === "inc"
+                ? [...prev].sort((item1,item2) => item1.price - item2.price)
+                : [...prev].sort((item1,item2) => item2.price - item1.price)
+                );
+        }
+    }
+      
 
     //End Nieuwe code
 
