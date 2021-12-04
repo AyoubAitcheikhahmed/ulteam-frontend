@@ -63,10 +63,9 @@ const ProductList = () => {
         const value = event.target.value;
         
         setFilter({
-            ...filter,
-            [event.target.name]:value ,
+            [event.target.name]:value
         });
-        console.log(filter)
+        
     }
 
     const sortHandle = (event) => setSort(event.target.value)
@@ -81,11 +80,11 @@ const ProductList = () => {
             <Title>Products</Title>
             <FilterContainer>
                 <Filter><FilterText>Filter Products:</FilterText>
-                <Select name="genre" onChange={filterHandle}>
+                <Select name="categories" onChange={filterHandle}>
                     <Option disabled>Genre</Option>
                     <Option>Action</Option>
                     <Option>Adventure</Option>
-                    <Option>Sport</Option>
+                    <Option>SPORT</Option>
                     <Option>RPG</Option>
                     <Option>FPS</Option>
                     <Option>MMORPG</Option>

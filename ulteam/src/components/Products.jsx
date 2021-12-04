@@ -21,11 +21,12 @@ const Products = ({category,filters,sort}) => {
     useEffect(() => {
         
         const getProducts = async () => {
-            console.log("inside getProducts ",category)
+           
             try{
                 const response = await axios.get(category ? `http://localhost:5000/api/products/?cat=${category}` 
                 : "http://localhost:5000/api/products");
-                setNewProducts(response.data);
+
+                setProducts(response.data);
             }catch (err){
                 //error
             };
@@ -34,23 +35,42 @@ const Products = ({category,filters,sort}) => {
     }, [category]);
     
     useEffect(() => {
-        console.log(category)
-        category && setNewProducts(
-            products.filter( element => Object.entries(filters).every(([key,value]) => 
-                element[key].includes(value)
-            )
-            )
-        );
+
+        filterProduct()
+        // setNewProducts(
+        //     newProducts.filter( element => Object.values(filters)
+        //     .some(item => element.categories.indexOf(item.toUpperCase()) >= 0))
+        // );
 
     }, [products, category,filters]);
 
+    /**
+     * niewe code 
+     */
+     function filterProduct() {
+        if(filters){
+            console.log(filters)
+            const res = products.filter(product => {
+                return Object.values(filters).every(filter => {
+                    return product.categories.includes(filter) 
+                })
+                });
+            console.log("filterProduct RESPONSE ",res)
+            const listOfProducts = res
+            console.log("filterProduct LISTOFPRODUCTS ",listOfProducts)
+            setNewProducts([...listOfProducts])
+        }
+      }
+
+    //End Nieuwe code
 
     return (
+     
         <Container>
-            {newProducts.map((element) => (
-                
-                <Product element={element} key={element._id}/>
-            ))}
+            {newProducts.length > 0 
+                ? newProducts.map((element) => <Product element={element} key={element._id}/>) 
+                : products.map((element) => <Product element={element} key={element._id}/>)
+            }
         </Container>
     )
 }
