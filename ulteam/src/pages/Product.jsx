@@ -1,12 +1,16 @@
 import { Filter } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import styled from 'styled-components'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
 import { mobile } from '../responsive'
-
+import { reqPublic } from '../axiosReq'
+import axios from 'axios'
+import { addProduct } from '../redux/shoppingCart_redux'
+import { useDispatch } from 'react-redux'
 
 const Container = styled.div``
 
@@ -20,13 +24,15 @@ const Wrapper = styled.div`
 
 `
 const ImgContainer = styled.div`
-    flex:1;
+    flex:2;
+    float:left;
     `
 
 const Image = styled.img`
     width: 100%;
     height: 70vh;
     object-fit: cover;
+    float:left;
     ${mobile({
         marginTop:"20px",
         height: "40vh",
@@ -35,7 +41,7 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
     padding: 0px 50px;
-    
+    flex: 2;
     ${mobile({
         padding: "10px"
     })}
@@ -68,7 +74,7 @@ const ButtonsContainer = styled.div`
 `
 
 const ButtonAdd = styled.button`
-    margin-left: 10px;
+    margin-top: 20px;
     cursor: pointer;
     width: 30%;
     border: none;
@@ -107,25 +113,54 @@ const ButtonBuy = styled.button`
     }
 `; 
 
+
+
+
+
 const Product = () => {
+
+    const prd_id = useLocation().pathname.split("/")[2];
+    const [product, setProduct] = useState({});
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+
+        const getProduct = async () => {
+         
+        try{
+            const response = await axios.get("http://localhost:5000/api/products/find/"+prd_id);
+       
+            setProduct(response.data);
+
+        }catch (err){}
+            //error
+        }; 
+        getProduct()
+    }, [prd_id]);
+
+    const handleAdd = () => {
+        const qty = 1
+        dispatch(addProduct({...product,qty}))
+    }
+
+    
+    
+    
     return (
         <Container>
             <Navbar />
             <Announcement />
             <Wrapper>
                 <ImgContainer>
-                    <Image src="https://www.1337.games/app/uploads/2021/04/zeus-s3-wz-social-share.jpg"/>
+                    <Image src={product.image}/>
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>Call Of Duty Warzone</Title>
-                    <Desc>Ervaar klassieke Call of Duty® first-person-gevechten in
-                         een totaal nieuwe gigantische gevechtsarena voor 150 spelers.
-                         Doe mee, bewapen je, plunder voor beloningen en vecht je een weg naar de top.
-                         Welkom in Warzone</Desc>
-                    <Price>22 &euro;</Price>
+                    <Title>{product.title}</Title>
+                    <Desc>{product.desc}</Desc>
+                    <Price>{product.price} &euro;</Price>
                     <ButtonsContainer>
                         <ButtonBuy>Buy</ButtonBuy>
-                        <ButtonAdd></ButtonAdd>
+                        <ButtonAdd onClick={handleAdd}></ButtonAdd>
                     </ButtonsContainer>
                 </InfoContainer>
             </Wrapper>

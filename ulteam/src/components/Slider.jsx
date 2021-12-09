@@ -71,6 +71,7 @@ const Title = styled.h1`
     color: white;
 `;
 const Desc = styled.p`
+    text-shadow: 2px 2px 10px white ;
     margin: 50px 0px;
     font-size: 20px;
     font-weight: 500;

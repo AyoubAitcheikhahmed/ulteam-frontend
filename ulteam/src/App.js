@@ -7,11 +7,15 @@ import ShoppingCart from './pages/ShoppingCart';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 
 const App = () => {
+
+  const user = useSelector((state) => state.user.user);
   return (
     <Router>
       <Routes>
@@ -19,9 +23,9 @@ const App = () => {
           <Route exact path="/products/" element={<ProductList/>} />
           <Route exact path="/products/:cat" element={<ProductList/>} />
           <Route exact path="/product/:id" element={<Product/>} />
-          <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/login" element={user ? <Navigate replace to="/" /> : <Login/>} />
           <Route exact path="/register" element={<Register/>} />
-          <Route exact path="/cart" element={<ShoppingCart/>} />
+          <Route exact path="/shoppingcart" element={<ShoppingCart/>} />
 
 
       </Routes>

@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { mobile } from '../responsive'
+import { useState } from 'react'
+import { loginProcess } from '../server_methodes'
+import { useDispatch, useSelector } from 'react-redux'
+
+import Alert from '@mui/material/Alert';
 
 
 const Container = styled.div`
@@ -66,14 +71,36 @@ const Link = styled.div`
 `
 
 const Login = () => {
+
+    const [username , setUsername] = useState("")
+    const [password , setPassword] = useState("")
+
+    const dispatch = useDispatch()
+    const { fetchingFlag,errorFlag } =useSelector((state) => state.user)
+    const handleLogin = (event) => {
+        event.preventDefault();
+        loginProcess(dispatch,{username,password})
+    }
+
     return (
+        
+
         <Container>
             <Wrapper>
                 <Title>Meldaan</Title>
                 <Form>
-                    <Input placeholder="gebruikersnaam"/>
-                    <Input placeholder="wachtwoord"/>
-                    <Button>Meld aan</Button>
+                    <Input placeholder="gebruikersnaam"
+                    onChange={(event) => setUsername(event.target.value)}
+                    />
+                    <Input
+                    type="password" style={{font: "large Verdana,sans-serif",letterSpacing: "0.12em"}}
+                    placeholder="wachtwoord"
+                    onChange={(event) => setPassword(event.target.value)}/>
+                    <Button onClick={handleLogin}>Meld aan</Button>
+                    {errorFlag
+                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="error">Combination seems not to be right..</Alert>
+                    : <></>
+                    }
                     <Link>Wachtwoord vergeten ?</Link>
                     <Link>Maak een nieuwe account aan</Link>
                 </Form>

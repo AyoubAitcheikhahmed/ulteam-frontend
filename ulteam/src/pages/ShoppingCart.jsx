@@ -6,6 +6,7 @@ import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { mobile } from '../responsive'
+import { useSelector } from "react-redux";
 
 
 const Container = styled.div`
@@ -40,7 +41,8 @@ const TopButton = styled.button`
 const TopTexts = styled.div`
     ${mobile({
         display: "none"
-    })}`
+    })}
+`
     
 const TopText = styled.span`
     cursor:pointer;
@@ -110,7 +112,7 @@ const ProductPlatform = styled.span`
 
 const Hr = styled.hr`
     border: none;
-    height: 1px;
+    height: 5px;
     background-color: #1b2d51;
 `
 
@@ -160,7 +162,13 @@ const Button = styled.button`
 
 
 const ShoppingCart = () => {
+   
+    const cart_data = useSelector(state => state.cart)
+
+    console.log(cart_data.products)
+
     return (
+    
         <Container>
             <Navbar />
             <Announcement />
@@ -176,35 +184,28 @@ const ShoppingCart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        <Product>
+                        {cart_data.products.map((element) => (
+                            <Product>
                             <ProductDetail>
-                                <Image src="https://www.1337.games/app/uploads/2021/04/zeus-s3-wz-social-share.jpg" />
+                                <Image src={element.image} />
                                     <Details>
-                                        <ProductName>Call of duty</ProductName>
-                                        <ProductPlatform>XBOX - PS5 - PC</ProductPlatform>
+                                        <ProductName>{element.title} </ProductName>
+                                        <ProductPlatform>{element.platform} </ProductPlatform>
                                     </Details>
                             </ProductDetail>
                             <PriceDetail>
-                                22 &euro;
+                            {element.price}  &euro;
                             </PriceDetail>
+                            
                         </Product>
-                        <Hr />
-                        <Product>
-                            <ProductDetail>
-                                <Image src="https://ruinedking.com/assets/images/en-us/share.jpg" />
-                                    <Details>
-                                        <ProductName>Call of duty</ProductName>
-                                        <ProductPlatform>XBOX - PS5 - PC</ProductPlatform>
-                                    </Details>
-                            </ProductDetail>
-                            <PriceDetail>
-                                19 &euro;
-                            </PriceDetail>
-                        </Product>
+                        ))
+                       }
+                        
                     </Info>
+                    <Hr />
                     <Sum>
                         <SumTitle>Order total</SumTitle>
-                        <SumTotal>80 &euro;</SumTotal>
+                        <SumTotal>{cart_data.totalPrice} &euro;</SumTotal>
                         <Button>Afrekenem</Button>
                     </Sum>
                 </Bottom>

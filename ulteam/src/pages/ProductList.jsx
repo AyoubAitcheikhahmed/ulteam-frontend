@@ -54,14 +54,12 @@ const Option = styled.option`
 const ProductList = () => {
 
     
-    
     const catName = useLocation().pathname.split("/")[2];
     const [filter, setFilter] = useState({})
     const [sort, setSort] = useState({})
     
     const filterHandle = (event) =>{
         const value = event.target.value;
-        
         setFilter({
             [event.target.name]:value
         });
@@ -109,8 +107,8 @@ const ProductList = () => {
                 <Filter><FilterText>Sort Products:</FilterText>
                 <Select onChange={sortHandle}>
                     <Option value="free" >Free items</Option>
-                    <Option value="inc" >Price Low &gt; High</Option>
-                    <Option value="dec" >Price High &gt; low </Option>
+                    <Option value="inc" >Prijs Low &gt; High</Option>
+                    <Option value="dec" >Prijs High &gt; low </Option>
                 </Select>
                 </Filter>
             </FilterContainer>

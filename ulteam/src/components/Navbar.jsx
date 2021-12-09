@@ -1,10 +1,13 @@
 import { Badge } from '@material-ui/core'; 
 import { Search, ShoppingBasket } from '@material-ui/icons';
+import LoginIcon from '@mui/icons-material/Login';
+import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import { mobile } from '../responsive'
 import React from 'react';
 import styled from 'styled-components';
 import logoSrc from '../assets/logo.png';
-
+import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 const Language = styled.span`
     font-size: 14px;
     cursor: pointer;
@@ -23,8 +26,15 @@ const SearchContainer = styled.div`
 `;
 
 const Input = styled.input`
-
-    border: none;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    
+    outline: none;
+    &&:focus{
+        outline: #1b2d51;
+        border-bottom-style: #1b2d51;
+    }
     ${mobile({
         width: "40px"
         })}
@@ -87,10 +97,21 @@ const Right = styled.div`
 `;
 
 const Icon = styled.div`
-    ${mobile({
-        display : "none"
-    })}
+    transition: all 0.5s ease;
+    &&:hover{
+        transform: scale(1.2);
+    }
 `
+
+const IconCart = styled.div`
+    transition: all 0.5s ease;
+   
+    &&:hover{
+        transform: scale(1.2);
+    }
+    ${mobile({display: "none"})}
+    `
+
 
 const MenuItem = styled.div`
     
@@ -107,6 +128,9 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+    const cart = useSelector(state => state.cart);
+    
+
     return (
         <Container>
             <Wrapper>
@@ -118,18 +142,35 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
+                <Link to="/">
                     <Logo src={logoSrc} />
+                </Link>
                 </Center>
                 <Right>
-                    <MenuItem>Aanmelden</MenuItem>
-                    <MenuItem>Lid Worden</MenuItem>
+                    <Link to="/Login">
                     <MenuItem>
-                    <Icon> 
-                        <Badge badgeContent={4} color="primary">
-                           <ShoppingBasket /> 
-                        </Badge>
-                    </Icon>
+                        <Icon>
+                        <LoginIcon style={{color: "#1b2d51"}} />
+                        </Icon>
                     </MenuItem>
+                    </Link>
+
+                    <Link to="/Register">
+                    <MenuItem>
+                        <Icon>
+                        <SwitchAccountIcon style={{color: "#1b2d51"}} />
+                        </Icon>
+                    </MenuItem>
+                    </Link>
+                        <MenuItem>
+                        <IconCart> 
+                            <Badge badgeContent={cart.quantity} color="primary">
+                            <Link to="/ShoppingCart">
+                            <ShoppingBasket style={{color: "#1b2d51"}} /> 
+                            </Link>
+                            </Badge>
+                        </IconCart>
+                        </MenuItem>
                 </Right>
             </Wrapper>
         </Container>

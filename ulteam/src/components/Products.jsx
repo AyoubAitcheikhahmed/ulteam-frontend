@@ -35,24 +35,31 @@ const Products = ({category,filters,sort}) => {
     }, [category]);
     
     useEffect(() => {
-
-        filterProducts()
-        sortProducts()
-        // setNewProducts(
-        //     newProducts.filter( element => Object.values(filters)
-        //     .some(item => element.categories.indexOf(item.toUpperCase()) >= 0))
-        // );
-
+        if (filters){
+            filterProducts();
+        }
+        if (sort){
+            sortProducts();
+        }
     }, [products, category,filters,sort]);
 
     /**
      * niewe code 
      */
      function filterProducts() {
-        if(filters){
+         //console.log("filters : ",filters)
+        if(filters.categories){
             const res = products.filter(product => {
                 return Object.values(filters).every(filter => {
                     return product.categories.includes(filter) 
+                })
+                });
+            const listOfProducts = res
+            setNewProducts([...listOfProducts])
+        }else if(filters.platform){
+            const res = products.filter(product => {
+                return Object.values(filters).every(filter => {
+                    return product.platform.includes(filter) 
                 })
                 });
             const listOfProducts = res
@@ -61,7 +68,6 @@ const Products = ({category,filters,sort}) => {
       }
 
       function sortProducts() {
-       console.log(sort)
         if (sort){
             setNewProducts( prev => 
                 sort === "inc"
@@ -79,7 +85,8 @@ const Products = ({category,filters,sort}) => {
         <Container>
             {newProducts.length > 0 
                 ? newProducts.map((element) => <Product element={element} key={element._id}/>) 
-                : products.map((element) => <Product element={element} key={element._id}/>)
+                : products.slice(0,12)
+                .map((element) => <Product element={element} key={element._id}/>)
             }
         </Container>
     )
