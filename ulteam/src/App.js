@@ -4,6 +4,7 @@ import ProductList from './pages/ProductList';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ShoppingCart from './pages/ShoppingCart';
+import AdminNavbar from './pages/admin_panel/adminHome/AdminHome';
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,6 +17,8 @@ import { useSelector } from 'react-redux'
 const App = () => {
 
   const user = useSelector((state) => state.user.user);
+  user && console.log(user)
+  console.log("adminstate")
   return (
     <Router>
       <Routes>
@@ -23,7 +26,13 @@ const App = () => {
           <Route exact path="/products/" element={<ProductList/>} />
           <Route exact path="/products/:cat" element={<ProductList/>} />
           <Route exact path="/product/:id" element={<Product/>} />
-          <Route exact path="/login" element={user ? <Navigate replace to="/" /> : <Login/>} />
+          <Route exact path="/login" element={!user 
+            ? <Login/> 
+            : ( user.others.admin 
+                ? <AdminNavbar /> 
+                : <Navigate replace to="/" />
+                )  } />
+
           <Route exact path="/register" element={<Register/>} />
           <Route exact path="/shoppingcart" element={<ShoppingCart/>} />
 

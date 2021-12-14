@@ -165,7 +165,7 @@ const ShoppingCart = () => {
    
     const cart_data = useSelector(state => state.cart)
 
-    console.log(cart_data.products)
+
 
     return (
     

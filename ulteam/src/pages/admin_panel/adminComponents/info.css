@@ -1,0 +1,31 @@
+.info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.infoItem{
+    flex: 1;
+    margin: 40px 20px;
+    padding: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-box-shadow: 7px 6px 19px -5px rgba(0,0,0,0.8); 
+    box-shadow: 7px 6px 19px -5px rgba(0,0,0,0.8);
+}
+
+.infoTitle{
+    font-size: 18px;
+}
+
+.infoNumberContainer{
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.number{
+    color: #3cc3b5;
+    font-size: 35px;
+    font-weight: 550;
+}

@@ -23,8 +23,8 @@ const Products = ({category,filters,sort}) => {
         const getProducts = async () => {
            
             try{
-                const response = await axios.get(category ? `http://localhost:5000/api/products/?cat=${category}` 
-                : "http://localhost:5000/api/products");
+                const response = await axios.get(category ? `https://ulteam-api.herokuapp.com/products/?cat=${category}` 
+                : "https://ulteam-api.herokuapp.com/api/products");
 
                 setProducts(response.data);
             }catch (err){

@@ -165,7 +165,7 @@ const Register = () => {
                     />
                   
                     {
-                        
+                    
                     Object.values(warnings)
                     .map((item) => 
                     <Alert style={{ flex:"1",  margin: "10px 12px 0px 0px"}} variant="filled" severity="error">

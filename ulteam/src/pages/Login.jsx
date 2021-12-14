@@ -76,7 +76,7 @@ const Login = () => {
     const [password , setPassword] = useState("")
 
     const dispatch = useDispatch()
-    const { fetchingFlag,errorFlag } =useSelector((state) => state.user)
+    const { errorFlag } =useSelector((state) => state.user)
     const handleLogin = (event) => {
         event.preventDefault();
         loginProcess(dispatch,{username,password})

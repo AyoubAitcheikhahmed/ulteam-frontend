@@ -2,7 +2,7 @@ import { login_begin,login_true,login_false } from "./redux/user_redux"
 import axios from "axios";
 //import { axiosReq } from './axiosReq'
 
-const URL = "http://localhost:5000/api/";
+const URL = "https://ulteam-api.herokuapp.com/api/";
 export const loginProcess = async (dispatch,user) => {
     
     

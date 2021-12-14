@@ -1,0 +1,96 @@
+.navbar {
+    padding-top:10px ;
+    background-color: #060b26;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    }
+    
+    
+    .menu-bars {
+    margin-left: 2rem;
+    font-size: 3rem;
+    background: none;
+    }
+    .logoText{
+        
+        margin: 10px auto;
+        color: #3cc3b5;
+        font-weight: bold;
+        width: 50px;
+        height: 50px;
+        font-size:10mm;
+    
+    }
+    .nav-menu {
+    background-color: #060b26;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 1000ms;
+    z-index: 2;
+    }
+    
+    .nav-menu.active {
+    left: 0;
+    transition: 350ms;
+    }
+    
+    .nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+    }
+    
+    .nav-text a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 25px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+    }
+    
+    .nav-text a:hover {
+    background-color: #3cc3b5;
+    }
+    
+    .menu-bars-img {
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    display: flex;
+        
+    }
+    img{
+        margin-left: 15px;
+        height: 45px;
+        width: 50px
+    }
+    
+    .nav-menu-items {
+    width: 100%;
+    }
+    
+    .navbar-toggle {
+    background-color: #060b26;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    }
+    
+    span {
+    margin-left: 16px;
+    }

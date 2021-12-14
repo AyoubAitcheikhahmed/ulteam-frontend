@@ -1,0 +1,24 @@
+.products{
+    flex: 1;
+    margin: 40px 20px;
+    padding: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-box-shadow: 7px 6px 19px -5px rgba(0,0,0,0.8); 
+    box-shadow: 7px 6px 19px -5px rgba(0,0,0,0.8);
+}
+.actions {
+    align-items: center;
+}
+
+.tableActionButtons {
+    
+    color :#3cc3b5;
+    margin: 0px auto;
+    transition: all 0.3s ease;
+    pointer:cursor;
+   
+} 
+.tableActionButtons:hover{
+        transform: scale(1.6);
+    }

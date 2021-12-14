@@ -71,7 +71,7 @@ const Icon = styled.div`
 const Product = ({element}) => {
     return (
         <Container>
-            <Circle />
+       
             <Image src={element.image}/>
             <Info>
                 <Icon>
