@@ -2,7 +2,7 @@ import { login_begin,login_true,login_false } from "./redux/user_redux"
 import axios from "axios";
 //import { axiosReq } from './axiosReq'
 
-const  BASE_URL = "http://localhost:5000/api/";
+const  BASE_URL = "https://ulteam-api.herokuapp.com/api/";
 const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).user.token;
 
 

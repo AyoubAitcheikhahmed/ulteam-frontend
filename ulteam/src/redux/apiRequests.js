@@ -19,7 +19,7 @@ import axios from "axios";
 import { adminRequest } from "../server_methodes";
 
 
-const BASE_URL = "http://localhost:5000/api/";
+const BASE_URL = "https://ulteam-api.herokuapp.com/api/";
 
 export const getProducts = async (dispatch) => {
         dispatch(getProducts_begin());
