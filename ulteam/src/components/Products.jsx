@@ -5,6 +5,7 @@ import { popularProducts } from '../data'
 import Product from './Product'
 import axios from 'axios'
 import { Category } from '@material-ui/icons'
+import Alert from '@mui/material/Alert';
 
 const Container = styled.div`
     padding:20px;
@@ -17,18 +18,23 @@ const Products = ({category,filters,sort}) => {
 
     const [products,setProducts] = useState([]);
     const [newProducts, setNewProducts] = useState([]);
+    const [apiError, setApiError] = useState(false);
 
     useEffect(() => {
-        
         const getProducts = async () => {
            
             try{
-                const response = await axios.get(category ? `https://ulteam-api.herokuapp.com/products/?cat=${category}` 
-                : "https://ulteam-api.herokuapp.com/api/products");
+                const response = await axios.get("https://ulteam-api.herokuapp.com/api/products");
+                if(category){
+                    const firstFilter = response.data.filter(product => {
+                        return product.categories.includes(category)
+                        });            
+                    setNewProducts([...firstFilter])
+                }
 
                 setProducts(response.data);
             }catch (err){
-                //error
+                setApiError(true);
             };
         };
         getProducts();
@@ -83,10 +89,18 @@ const Products = ({category,filters,sort}) => {
     return (
      
         <Container>
-            {newProducts.length > 0 
+            {
+            newProducts.length > 0 
                 ? newProducts.map((element) => <Product element={element} key={element._id}/>) 
                 : products.slice(0,12)
                 .map((element) => <Product element={element} key={element._id}/>)
+            }
+                              
+            {
+            apiError &&
+            <Alert style={{ flex:"1",  margin: "10px 12px 0px 0px",letterSpacing: "3px",fontSize: "30px"}} variant="filled" severity="error">
+                Something went wrong during data fetching, consult the <string>support</string>
+            </Alert>
             }
         </Container>
     )

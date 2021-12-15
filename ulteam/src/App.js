@@ -18,7 +18,7 @@ const App = () => {
 
   const user = useSelector((state) => state.user.user);
   user && console.log(user)
-  console.log("adminstate")
+  
   return (
     <Router>
       <Routes>

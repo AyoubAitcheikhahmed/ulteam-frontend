@@ -61,7 +61,7 @@ const ProductList = () => {
     const filterHandle = (event) =>{
         const value = event.target.value;
         setFilter({
-            [event.target.name]:value
+            [event.target.name]:value.toLowerCase()
         });
         
     }
@@ -80,13 +80,14 @@ const ProductList = () => {
                 <Filter><FilterText>Filter Products:</FilterText>
                 <Select name="categories" onChange={filterHandle}>
                     <Option disabled>Genre</Option>
-                    <Option>Action</Option>
-                    <Option>Adventure</Option>
-                    <Option>SPORT</Option>
-                    <Option>RPG</Option>
-                    <Option>FPS</Option>
-                    <Option>MMORPG</Option>
-                    <Option>Puzzel</Option>
+                    <Option value="all" >All Games</Option>
+                    <Option value="action" >Action</Option>
+                    <Option value="adventure" >Adventure</Option>
+                    <Option value="sport" >SPORT</Option>
+                    <Option value="rpg" >RPG</Option>
+                    <Option value="fps" >FPS</Option>
+                    <Option value="mmorpg" >MMORPG</Option>
+                    <Option value="puzzel" >Puzzel</Option>
                 </Select>
 
                 <Select name="platform" onChange={filterHandle}>

@@ -24,19 +24,19 @@ export const categories = [
         id:0,
         title: "Sport",
         img:"https://mir-s3-cdn-cf.behance.net/project_modules/fs/28877b101249425.5f1a56032f2d6.png",
-        category : "SPORT",
+        category : "sport",
     },
     {
         id:2,
         title: "FPS",
         img:"https://www.pixel4k.com/wp-content/uploads/2020/08/call-of-duty-warzone_1596993314.jpg",
-        category: "FPS",
+        category: "fps",
     },
     {
         id:3,
         title: "Casual",
         img:"https://image.api.playstation.com/vulcan/img/rnd/202107/2312/phlWRSv7blQgwHRFFS3djwpl.png",
-        category: "SPORT",
+        category: "casual",
     }
 ]
 
