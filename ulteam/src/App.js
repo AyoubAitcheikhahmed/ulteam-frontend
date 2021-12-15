@@ -5,6 +5,9 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ShoppingCart from './pages/ShoppingCart';
 import AdminNavbar from './pages/admin_panel/adminHome/AdminHome';
+import AdminProductList from './pages/admin_panel/adminProductList/AdminProductList.jsx';
+import AdminHome from './pages/admin_panel/adminHome/AdminHome';
+import AdminSingleProductUpdate from './pages/admin_panel/adminSingleProductUpdate/AdminSingleProductUpdate';
 import {
   BrowserRouter as Router,
   Routes,
@@ -22,6 +25,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
+          <Route exact path="/adminSingleProductUpdate/:id" element={<AdminSingleProductUpdate/>} />
+          <Route exact path="/adminHome" element={<AdminHome/>} />
+          <Route exact path="/adminProductList" element={<AdminProductList/>} />
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/products/" element={<ProductList/>} />
           <Route exact path="/products/:cat" element={<ProductList/>} />

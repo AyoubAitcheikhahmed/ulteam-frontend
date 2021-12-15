@@ -13,7 +13,7 @@
     background: none;
     }
     .logoText{
-        
+        letter-spacing: 5px;
         margin: 10px auto;
         color: #3cc3b5;
         font-weight: bold;

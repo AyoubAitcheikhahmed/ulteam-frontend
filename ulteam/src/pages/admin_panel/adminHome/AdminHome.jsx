@@ -11,7 +11,7 @@ import { chartDummyData } from '../DummyData'
 function AdminHome() {
     return (
         <>
-      
+        
             <Navbar />
             <Info />
             <Chart title="Sales Inqueries" data={chartDummyData} dataKey="sales" />
