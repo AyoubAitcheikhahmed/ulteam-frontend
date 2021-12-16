@@ -128,7 +128,7 @@ const Product = () => {
         const getProduct = async () => {
          
         try{
-            const response = await axios.get("http://localhost:5000/api/products/find/"+prd_id);
+            const response = await axios.get("https://ulteam-api.herokuapp.com/api/products/find/"+prd_id);
        
             setProduct(response.data);
 
