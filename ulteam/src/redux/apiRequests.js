@@ -19,7 +19,7 @@ import axios from "axios";
 import { adminRequest } from "../server_methodes";
 
 
-const BASE_URL = "https://ulteam-api.herokuapp.com/api/";
+const BASE_URL = "http://localhost:5000/api/";
 
 export const getProducts = async (dispatch) => {
         dispatch(getProducts_begin());
@@ -36,7 +36,7 @@ export const deleteProducts = async (id,dispatch) => {
     dispatch(deleteProducts_begin());
     try{
         
-        const response = await adminRequest.delete(`products/${id}`);
+        await adminRequest.delete(`products/${id}`);
         dispatch(deleteProducts_true(id));
     }catch (err){
         dispatch(deleteProducts_false());

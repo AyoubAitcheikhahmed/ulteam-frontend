@@ -1,8 +1,14 @@
 import axios from "axios";
 
-const URL = "https://ulteam-api.herokuapp.com/api" ;
-const TKN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTI5ZTFmM2YxODZmYTM0YzA0OGEzOCIsImFkbWluIjp0cnVlLCJpYXQiOjE2Mzg2Njk5MTMsImV4cCI6MTYzODc1NjMxM30.bdhXL2am_bDXKTFd3LSIYcqc-s743FsxJA6vye21nQQ" 
+const URL = "http://localhost:5000/api" ;
+const TKN = () => {
+    if(JSON.parse(localStorage.getItem("persist:root")) == null || JSON.parse(localStorage.getItem("persist:root")).user.user == null){
+        return "Not_defined";
+   }else{
+        return JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).user.token;
+   }
 
+}
 export const reqPublic = axios.create({
     baseURL : URL,
 });
