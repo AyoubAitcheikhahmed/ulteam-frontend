@@ -74,10 +74,6 @@ npm install --save redux
 ## 📝Extra Sources
 
 - Styled Components [@styledcomponents](https://styled-components.com/docs/basics)
-
-- React Form Validation [@Brian Design](https://youtu.be/KGFG-yQD7Dw)
-- JWT tutorial [@lama](https://youtu.be/Yh5Lil03tpI)
-- Redux Toolkit [@pedrotech](https://youtu.be/k68j9xlbHHk)
 - React Form Validation [@Brian Design](https://youtu.be/KGFG-yQD7Dw)
 - JWT tutorial [@lama](https://youtu.be/Yh5Lil03tpI)
 - Redux Toolkit [@pedrotech](https://youtu.be/k68j9xlbHHk)
