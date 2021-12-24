@@ -63,10 +63,7 @@ npm install --save redux
 
 ## API Reference
 
-```html
-<a href="https://ulteam-api.herokuapp.com/api-docs/">Link to API DOCS</a>
-
-```
+- Link to API DOCS [@swaggerapi](https://ulteam-api.herokuapp.com/api-docs/)
 
 [Back To The Top](#ulteam)
 
