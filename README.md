@@ -9,9 +9,12 @@
 ### Table of Contents
 
 - [Description](#description)
+- [Built with](#built-with)
+- [Technologies](#technologies)
 - [How To Use](#how-to-use)
-- [References](#references)
-- [License](#license)
+- [Installation](#installation)
+- [API Reference](#api-reference)
+- [Extra Sources](#extra-sources)
 - [Author Info](#author-info)
 
 ---
