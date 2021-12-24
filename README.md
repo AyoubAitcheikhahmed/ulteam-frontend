@@ -36,7 +36,7 @@
 ## 🚀How To Use
 
 ```cli
-yarn start
+$yarn start
 ```
 
 ---
@@ -44,19 +44,19 @@ yarn start
 ## Installation
 
 ```cli
-npm install --save styled-components
+$npm install --save styled-components
 ```
 
 ```cli
-yarn add @mui/icons-material
+$yarn add @mui/icons-material
 ```
 
 ```cli
-npm install recharts
+$npm install recharts
 ```
 
 ```cli
-npm install --save redux
+$npm install --save redux
 ```
 
 ---
