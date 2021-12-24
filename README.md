@@ -32,6 +32,16 @@
 [Back To The Top](#ulteam)
 
 ---
+## 📚Technologies
+
+- redux-toolkit
+- redux-persist
+- MongoDB
+- axios
+- mui
+- recharts
+- styled-components
+
 
 ## 🚀How To Use
 
