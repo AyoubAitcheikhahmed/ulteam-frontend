@@ -4,14 +4,14 @@ import userReducer from "./user_redux";
 import productReducer from "./product_redux";
 import storage from "redux-persist/lib/storage";
 import {
-persistStore,
-persistReducer,
-FLUSH,
-REHYDRATE,
-PAUSE,
-PERSIST,
-PURGE,
-REGISTER,
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
 } from "redux-persist";
 
 const persistConfig = {

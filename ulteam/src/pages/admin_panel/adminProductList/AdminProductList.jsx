@@ -13,7 +13,7 @@ function AdminProductList() {
     
     const dispatch = useDispatch();
     const productsData = useSelector(state => state.product.products)
-    console.log(productsData)
+  
     useEffect(() => {
         getProducts(dispatch);
     }, [dispatch]);

@@ -31,7 +31,6 @@ const Products = ({category,filters,sort}) => {
                         });            
                     setNewProducts([...firstFilter])
                 }
-
                 setProducts(response.data);
             }catch (err){
                 setApiError(true);
@@ -95,7 +94,6 @@ const Products = ({category,filters,sort}) => {
                 : products.slice(0,12)
                 .map((element) => <Product element={element} key={element._id}/>)
             }
-                              
             {
             apiError &&
             <Alert style={{ flex:"1",  margin: "10px 12px 0px 0px",letterSpacing: "3px",fontSize: "30px"}} variant="filled" severity="error">

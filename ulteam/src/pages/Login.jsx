@@ -74,12 +74,15 @@ const Login = () => {
 
     const [username , setUsername] = useState("")
     const [password , setPassword] = useState("")
-
     const dispatch = useDispatch()
     const { errorFlag } =useSelector((state) => state.user)
+    const { errorMsg } =useSelector((state) => state.user)
     const handleLogin = (event) => {
-        event.preventDefault();
-        loginProcess(dispatch,{username,password})
+
+
+            event.preventDefault();
+            loginProcess(dispatch,{username,password})
+
     }
 
     return (
@@ -98,7 +101,7 @@ const Login = () => {
                     onChange={(event) => setPassword(event.target.value)}/>
                     <Button onClick={handleLogin}>Meld aan</Button>
                     {errorFlag
-                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="error">Combination seems not to be right..</Alert>
+                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="error">{errorMsg} !</Alert>
                     : <></>
                     }
                     <Link>Wachtwoord vergeten ?</Link>
@@ -109,4 +112,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

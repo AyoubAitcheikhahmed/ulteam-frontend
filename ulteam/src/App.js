@@ -37,8 +37,7 @@ const App = () => {
             : ( user.others.admin 
                 ? <AdminNavbar /> 
                 : <Navigate replace to="/" />
-                )  } />
-
+                ) } />
           <Route exact path="/register" element={<Register/>} />
           <Route exact path="/shoppingcart" element={<ShoppingCart/>} />
 

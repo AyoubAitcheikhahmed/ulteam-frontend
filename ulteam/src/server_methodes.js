@@ -36,11 +36,27 @@ export const loginProcess = async (dispatch,user) => {
         dispatch(login_true(respone.data));
 
     }catch(err){
-        dispatch(login_false());
+        dispatch(login_false(err.message));
+
+    }
+};
+
+
+export const registerUser = async (newUser) => {
+    
+    
+    try{
+        
+        await axios.post(BASE_URL+"users/register/",user);
+    }catch(err){
+        return err 
     }
 };
 
 export const adminRequest = axios.create({
     baseURL: BASE_URL,
-    headers: { token: `Bearer ${TOKEN}` },
+    headers: { 
+        token: `Bearer ${TOKEN}`,
+        admin: true
+     }
   });

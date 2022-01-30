@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import logoSrc from '../assets/logo.png';
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import {logout} from '../redux/user_redux'
 const Language = styled.span`
     font-size: 14px;
     cursor: pointer;
@@ -129,7 +131,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
     const cart = useSelector(state => state.cart);
-    
+      
 
     return (
         <Container>
@@ -147,6 +149,7 @@ const Navbar = () => {
                 </Link>
                 </Center>
                 <Right>
+
                     <Link to="/Login">
                     <MenuItem>
                         <Icon>

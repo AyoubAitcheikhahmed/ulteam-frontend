@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { mobile } from '../responsive';
 import { useForm } from './useForm';
 import { useState, useEffect } from "react";
+
 import Alert from '@mui/material/Alert';
+import axios from "axios";
 
 
 
@@ -75,7 +77,9 @@ const Button = styled.button`
 `
 
 const Register = () => {
-
+    const [apiErr, setApiErr] = useState(null)
+    const [apiMsg, setApiMsg] = useState(null)
+    
     const [values, setValues] = useState({
         name: '',
         username: '',
@@ -84,7 +88,6 @@ const Register = () => {
         passwordConf: ''
     });
     const [warnings, setWarnings] = useState({});
-    const [submitFlag, setSubmitFlag] = useState(false);
     
     const handleChange = (event) => {
         
@@ -96,15 +99,28 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setWarnings(validateForm(values));
-        setSubmitFlag(true);
-    }
+        
+        registerUser({
+            username: values.username,
+            email: values.email,
+            password: values.password
+        })
+        
+        
+    };
 
-    useEffect(() =>{
-        console.log(Object.values(warnings).map((item) => "item "+item))
-        if(Object.keys(warnings).length === 0 && submitFlag){
-                console.log("ERRORS : ", Object.keys(warnings))
-        }
-    },[warnings]);
+    const registerUser = async (newUser) => {
+
+            try{
+                
+                await axios.post("https://ulteam-api.herokuapp.com/api/users/register/",newUser);
+                setApiMsg("User Registerd ! ")
+            }catch(err){
+                setApiErr(err)
+            }
+    
+    };
+
 
     const validateForm = (values) => {
         const warningMsg = {};
@@ -126,7 +142,7 @@ const Register = () => {
         if(!values.passwordConf.trim()){
             warningMsg.password = "Password is required";
         }
-
+   
         return warningMsg;
         
     };
@@ -177,6 +193,14 @@ const Register = () => {
                         Bij het aanmaken van een account, ... Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat id facilis nam.
                     </Agreement>
                     <Button>Maak Account</Button>
+                    {apiErr
+                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="error">{apiErr} !</Alert>
+                    : <></>
+                    }
+                    {apiMsg
+                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="success">{apiMsg} !</Alert>
+                    : <></>
+                    }
                 </Form>
             </Wrapper>
         </Container>

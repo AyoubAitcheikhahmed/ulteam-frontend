@@ -9,6 +9,7 @@ import { Alert,AlertTitle } from '@mui/material';
 
 
 function AdminSingleProductUpdateUpdate() {
+
     const productId = useLocation().pathname.split("/")[2];
     const product = useSelector((state) => state.product.products.find(element =>  element._id === productId));
     
@@ -50,11 +51,9 @@ function AdminSingleProductUpdateUpdate() {
   
     }
     
-
     const handelNotifications = (product) => {
         
         if(!errorFlag){
-    
             return(
             <Alert severity="success">
             <AlertTitle>Success</AlertTitle>
@@ -62,7 +61,6 @@ function AdminSingleProductUpdateUpdate() {
             </Alert>
         );
         }else if (errorFlag){
-    
             return(
                 <Alert severity="error" >
                 <AlertTitle>Error</AlertTitle>
@@ -72,7 +70,7 @@ function AdminSingleProductUpdateUpdate() {
         }
         
     }
-    return (
+    return 1(
         <div className="product">
         <div className="header">
             <h1 className="productTitle">Update Game</h1>

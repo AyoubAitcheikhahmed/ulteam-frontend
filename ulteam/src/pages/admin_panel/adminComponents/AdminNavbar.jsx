@@ -6,13 +6,27 @@ import './adminNavbar.css';
 import { menu_data } from '../menu_data';
 import { IconContext } from 'react-icons';
 import ulteam_logo_Admin from '../../../assets/ulteamLogo_Admin.png';
+import {useDispatch} from 'react-redux';
+import {logout,login_false } from '../../../redux/user_redux'
+
 
 
 function AdminNavbar() {
 
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
+    const dispatch = useDispatch();
 
+    const handleLogout = () =>{
+      dispatch(logout())
+      
+    }
+    
+
+
+
+
+    
     return (
         <>
       <IconContext.Provider value={{ color: '#fff' }}>
@@ -30,6 +44,13 @@ function AdminNavbar() {
                 <AiIcons.AiOutlineClose />
               </Link>
               <img src={ulteam_logo_Admin} alt="Ulteam logo"/>
+            </li>
+            <li className="nav-text" onClick={handleLogout}>
+              <Link to='#' >
+              <AiIcons.AiOutlinePoweroff />
+              <span>LOGOUT</span>
+            
+            </Link>
             </li>
             {menu_data.map((item, index) => {
               return (
