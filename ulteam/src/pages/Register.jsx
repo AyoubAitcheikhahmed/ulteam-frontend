@@ -113,7 +113,7 @@ const Register = () => {
 
             try{
                 console.log(newUser);
-                await axios.post("http://localhost:5000/api/users/register/",newUser);
+                await axios.post("https://ulteam-api.herokuapp.com/api/users/register/",newUser);
                 setApiMsg("User Registerd ! ")
             }catch(err){
                
