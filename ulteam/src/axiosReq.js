@@ -12,7 +12,6 @@ const TKN = () => {
 export const reqPublic = axios.create({
     baseURL : URL,
 });
-
 export const reqPrivate = axios.create({
     server_URL : URL,
     header : {token: `Bearer ${TKN} `}
