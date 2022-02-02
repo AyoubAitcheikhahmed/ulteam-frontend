@@ -24,7 +24,7 @@ const Products = ({category,filters,sort}) => {
         const getProducts = async () => {
            
             try{
-                const response = await axios.get("https://ulteam-api.herokuapp.com/api/products");
+                const response = await axios.get("http://localhost:5000/api/products");
                 if(category){
                     const firstFilter = response.data.filter(product => {
                         return product.categories.includes(category)

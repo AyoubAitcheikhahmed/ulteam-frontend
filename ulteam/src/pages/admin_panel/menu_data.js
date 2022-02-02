@@ -20,7 +20,7 @@ export const menu_data = [
   },
   {
     title: 'Add New Game',
-    path: '/newproduct',
+    path: '/AdminAddProduct',
     icon: <AiIcons.AiFillPlusCircle />,
     cName: 'nav-text'
   },

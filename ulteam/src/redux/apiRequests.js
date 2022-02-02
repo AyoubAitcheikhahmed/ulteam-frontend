@@ -19,7 +19,7 @@ import axios from "axios";
 import { adminRequest } from "../server_methodes";
 
 
-const BASE_URL = "https://ulteam-api.herokuapp.com/api/";
+const BASE_URL = "http://localhost:5000/api/";
 
 export const getProducts = async (dispatch) => {
         dispatch(getProducts_begin());
@@ -57,8 +57,9 @@ try{
 export const updateProducts = async (id ,product ,dispatch) => {
     dispatch(updateProducts_begin());
 try{
-    dispatch(updateProducts_true({id:id,product:product}));
-    // const response = await adminRequest.put(`products/${id}`);
+    console.log("inside UPDATE PRODUCTS",{_id:id,product:product});
+    dispatch(updateProducts_true({_id:id,product:product}));
+     await adminRequest.put(`products/${id}`,product);
     
 }catch (err){
     dispatch(updateProducts_false());

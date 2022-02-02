@@ -62,6 +62,8 @@ const productSlice = createSlice({
         
         updateProducts_true:(state,action) => {
             state.fetchingFlag = false;
+            console.log("PAYLOAD ",action.payload);
+            console.log("PAYLOAD PRODUCT",action.payload.product);
             state.products[state.products.findIndex((element) => element._id === action.payload.id)] = action.payload.product;
         },
         updateProducts_false:(state) => {

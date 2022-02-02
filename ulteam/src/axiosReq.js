@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://ulteam-api.herokuapp.com/api" ;
+const URL = "http://localhost:5000/api" ;
 const TKN = () => {
     if(JSON.parse(localStorage.getItem("persist:root")) == null || JSON.parse(localStorage.getItem("persist:root")).user.user == null){
         return "Not_defined";
