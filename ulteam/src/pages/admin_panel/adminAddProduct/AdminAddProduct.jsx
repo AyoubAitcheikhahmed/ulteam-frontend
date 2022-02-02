@@ -1,19 +1,16 @@
-import "./adminSingleProduct.css";
+import "./adminAddProduct.css";
 import Button from "mui-button";
 import SendIcon from "@material-ui/icons/Send"
 import { useLocation } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
-import { updateProducts } from "../../../redux/apiRequests";
+import { addProducts } from "../../../redux/apiRequests";
 import { Alert,AlertTitle } from '@mui/material';
 import Navbar from '../adminComponents/AdminNavbar';
 
+function AdminAddProduct() {
 
 
-function AdminSingleProductUpdate() {
-
-    const productId = useLocation().pathname.split("/")[2];
-    const product = useSelector((state) => state.product.products.find(element =>  element._id === productId));
     
     const [productInput, setProductInput] = useState({});
 
@@ -48,14 +45,15 @@ function AdminSingleProductUpdate() {
         //add 2 arrays (categories[,,,] and platform[,,,,] to object )
         
         const finalProduct = {...productInput,categories,platforms};
-        console.log("Final product line 48 adminsingleproductupdat is : **** ",finalProduct);
-        console.log("product is is : ",productId);
         setNotifications(handelNotifications(finalProduct));
-        updateProducts(productId,finalProduct,dispatch);
+
+        addProducts(finalProduct,dispatch);
         
   
     }
     
+    //https://github.com/AyoubAitcheikhahmed/ulteam-frontend.git
+    //https://github.com/HOGENT-Web/frontendweb-pieter-2122-AyoubAitcheikhahmed.git
 
     const handelNotifications = (product) => {
         let  keys = Object.keys(product);
@@ -87,35 +85,19 @@ function AdminSingleProductUpdate() {
     }
     return (
         <>
-                 <Navbar />
-
+         <Navbar />
+        
         <div className="product">
         <div className="header">
-            <h1 className="productTitle">Update Game</h1>
+            <h1 className="productTitle">Create Game</h1>
                 {notifications}
-            <Button variant="contained" color="primary" style={{color:"white"}} endIcon={<SendIcon />} onClick={handleUpdate}>Update</Button>
+            <Button variant="contained" color="primary" style={{color:"white"}} endIcon={<SendIcon />} onClick={handleUpdate}>Create</Button>
         </div>
         <div className="productBody">
-            <div className="productInfo">
-                <div className="topInfo">
-                    <h1 className="productTitle">{product.title}</h1>
-                    <img src={product.image} alt="BattleField 2042" className="displayImage" />
-                </div>
-                <div className="bottomInfo">
-                    <span className="infoTitle">Descripton</span>
-                    <span className="info">{product.desc}</span>
-                    <span className="infoTitle">Available on</span>
-                    <span className="info">{product.platform}</span>
-                    <span className="infoTitle">Price</span>
-                    <span className="info">{product.price} &euro;</span>
-                    <span className="infoTitle">Category</span>
-                    <span className="info">{product.categories}</span>
-                    <span></span>
-                </div>
-            </div>
+
 
             <div className="productUpdateInfo">
-            <h3 className="productTitle">Update form</h3>
+            <h3 className="productTitle">New Game form</h3>
             <form action="" className="productForm">
         <div className="inputItem">
             <label >Game Title </label>
@@ -156,4 +138,4 @@ function AdminSingleProductUpdate() {
     )
 }
 
-export default AdminSingleProductUpdate
+export default AdminAddProduct

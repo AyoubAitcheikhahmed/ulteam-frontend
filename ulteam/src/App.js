@@ -7,6 +7,7 @@ import ShoppingCart from './pages/ShoppingCart';
 import AdminNavbar from './pages/admin_panel/adminHome/AdminHome';
 import AdminProductList from './pages/admin_panel/adminProductList/AdminProductList.jsx';
 import AdminHome from './pages/admin_panel/adminHome/AdminHome';
+import AdminAddProduct from './pages/admin_panel/adminAddProduct/AdminAddProduct';
 import AdminSingleProductUpdate from './pages/admin_panel/adminSingleProductUpdate/AdminSingleProductUpdate';
 import {
   BrowserRouter as Router,
@@ -26,13 +27,15 @@ const App = () => {
     <Router>
       <Routes>
           <Route exact path="/adminSingleProductUpdate/:id" element={<AdminSingleProductUpdate/>} />
+          <Route exact path="/adminAddProduct/" element={<AdminAddProduct/>} />
           <Route exact path="/adminHome" element={<AdminHome/>} />
           <Route exact path="/adminProductList" element={<AdminProductList/>} />
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/products/" element={<ProductList/>} />
           <Route exact path="/products/:cat" element={<ProductList/>} />
           <Route exact path="/product/:id" element={<Product/>} />
-          <Route exact path="/login" element={!user 
+          <Route exact path="/login" element={
+            !user 
             ? <Login/> 
             : ( user.others.admin 
                 ? <AdminNavbar /> 

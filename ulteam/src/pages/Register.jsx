@@ -112,11 +112,12 @@ const Register = () => {
     const registerUser = async (newUser) => {
 
             try{
-                
-                await axios.post("https://ulteam-api.herokuapp.com/api/users/register/",newUser);
+                console.log(newUser);
+                await axios.post("http://localhost:5000/api/users/register/",newUser);
                 setApiMsg("User Registerd ! ")
             }catch(err){
-                setApiErr(err)
+               
+                setApiErr("Request failed with status code 404")
             }
     
     };

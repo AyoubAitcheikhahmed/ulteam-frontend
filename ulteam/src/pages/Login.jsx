@@ -87,7 +87,6 @@ const Login = () => {
 
     return (
         
-
         <Container>
             <Wrapper>
                 <Title>Meldaan</Title>
@@ -101,7 +100,7 @@ const Login = () => {
                     onChange={(event) => setPassword(event.target.value)}/>
                     <Button onClick={handleLogin}>Meld aan</Button>
                     {errorFlag
-                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="error">{errorMsg} !</Alert>
+                    ? <Alert style={{ flex:"1",  margin: "10px 12px 10px 0px"}} variant="filled" severity="error">Combination seems to be wrong!</Alert>
                     : <></>
                     }
                     <Link>Wachtwoord vergeten ?</Link>
